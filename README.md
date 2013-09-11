@@ -6,7 +6,7 @@ Image hashing library for C++. Main features:
 * Supports a lot of image formats.
 * Simple. You need only 3 lines of code to hash an image.
 
-** Installation ***
+**Installation**
 
 Tle library is built with CMake in a common way.
 
@@ -16,7 +16,7 @@ Tle library is built with CMake in a common way.
     
 There's also stuff for building debian/ubuntu packages and a PPA with them.
 
-*** How to use ***
+**How to use**
 
 A small example showing library usage:
 
