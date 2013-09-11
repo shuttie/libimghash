@@ -13,6 +13,9 @@ target_link_libraries(singlefile libimghash ${ImageMagick_LIBRARIES})
 add_executable(delta examples/delta.cpp)
 target_link_libraries(delta libimghash ${ImageMagick_LIBRARIES})
 
+add_executable(benchmark examples/benchmark.cpp)
+target_link_libraries(benchmark libimghash ${ImageMagick_LIBRARIES})
+
 add_executable(compression_test tests/compression_test.cpp tests/test.cpp tests/test.h)
 target_link_libraries(compression_test libimghash ${ImageMagick_LIBRARIES})
 

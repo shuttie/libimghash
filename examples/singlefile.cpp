@@ -22,11 +22,7 @@
  * Authors: Roman Grebennikov
  */
 
-#include <iostream>
-#include <fstream>
-#include <ios>
 #include "simplehasher.h"
-#include <sys/stat.h>
 
 int main(int argc, char* argv[]) {
     if (argc == 2) {
@@ -37,5 +33,7 @@ int main(int argc, char* argv[]) {
         imghash::Hash hash = hasher->hash(data);
         std::cout << "hash: " << hash.toHex() << "\n";
         delete hasher;
+    } else {
+        printf("Usage: ./singlefile <input_file>");
     }
 }

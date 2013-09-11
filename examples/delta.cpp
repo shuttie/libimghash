@@ -36,5 +36,7 @@ int main(int argc, char* argv[]) {
         imghash::Hash hash2 = hasher->hash(data2);
         std::cout << "hash1: " << hash1.toHex() << "\nhash2: " << hash2.toHex() << "\nRMSE: " << hash1.getRMSE(hash2) << "\n";
         delete hasher;
+    } else {
+        printf("Usage: ./delta <input_file> <input_file>");
     }
 }
