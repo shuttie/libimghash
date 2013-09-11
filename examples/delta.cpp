@@ -1,31 +1,11 @@
-#include <iostream>
-#include <fstream>
-#include <ios>
 #include "simplehasher.h"
-#include <sys/stat.h>
-
-std::string loadFile(std::string fileName) {
-    std::string result;
-    std::ifstream input;
-    input.open(fileName.c_str(), std::ios::in | std::ios::binary);
-    if (input.is_open()) {
-        // getting file size
-        struct stat stat_buf;
-        int rc = stat(fileName.c_str(), &stat_buf);
-        int size = stat_buf.st_size;
-        // reading data
-        char* buffer = new char[size];
-        input.read(buffer,size);
-        result = std::string(buffer,size);
-        delete buffer;
-    }
-    return result;
-}
 
 int main(int argc, char* argv[]) {
     if (argc == 3) {
-        std::string data1 = loadFile(argv[1]);
-        std::string data2 = loadFile(argv[2]);
+        imghash::Source data1;
+        data1.loadFile(argv[1]);
+        imghash::Source data2;
+        data2.loadFile(argv[2]);
         // hashing
         imghash::Hasher *hasher = new imghash::SimpleHasher(8);
         imghash::Hash hash1 = hasher->hash(data1);
