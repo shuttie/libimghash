@@ -73,21 +73,3 @@ float imghash::SimpleHasher::getAverage(const Magick::PixelPacket* pixels) const
     return (float)sum/(float)count;
 }
 
-int imghash::SimpleHasher::getMedian(const Magick::PixelPacket *pixels) const
-{
-    std::map<unsigned int,unsigned int> hist;
-    int max = 0;
-    unsigned int max_key = 0;
-    for (unsigned int i=0; i<size; i++) {
-        for (unsigned int j=0; j<size; j++) {
-            unsigned int key = (*pixels++).green;
-            unsigned int value = hist[key] + 1;
-            if (value > max) {
-                max_key = key;
-                max = value;
-            }
-            hist[key]++;
-        }
-    }
-    return max_key;
-}

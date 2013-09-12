@@ -1,7 +1,6 @@
 #ifndef SIMPLEHASHER_H
 #define SIMPLEHASHER_H
 
-#include <map>
 #include "hasher.h"
 
 namespace imghash {
