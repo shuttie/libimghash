@@ -1,15 +1,21 @@
 project(libimghash)
 cmake_minimum_required(VERSION 2.8)
 aux_source_directory(. SRC_LIST)
-FIND_PACKAGE(ImageMagick COMPONENTS Magick++)
+FIND_PACKAGE(ImageMagick COMPONENTS Magick++ REQUIRED)
+FIND_PACKAGE(PythonLibs 2.7 REQUIRED)
 include_directories("${ImageMagick_INCLUDE_DIRS}")
 include_directories("include")
+include_directories("${PYTHON_INCLUDE_DIRS}")
 add_definitions("-DMAGICKCORE_QUANTUM_DEPTH=8" "-DMAGICKCORE_HDRI_ENABLE=0")
 add_library(imghash SHARED lib/source.cpp include/source.h lib/hash.cpp include/hash.h lib/hasher.cpp include/hasher.h lib/simplehasher.cpp include/simplehasher.h)
 target_link_libraries(imghash ${ImageMagick_LIBRARIES})
 
-add_library(imghash-c SHARED lib/imghash_c.cpp lib/imghash_c.h)
+add_library(imghash-c SHARED lib/imghash_c.cpp include/imghash_c.h)
 target_link_libraries(imghash-c imghash)
+
+add_library(imghash-python SHARED lib/imghash_c.cpp include/imghash_c.h python/imghash_wrap.cpp)
+include_directories("../include")
+target_link_libraries(imghash-python imghash ${PYTHON_LIBRARIES})
 
 add_executable(singlefile examples/singlefile.cpp)
 target_link_libraries(singlefile imghash ${ImageMagick_LIBRARIES})
