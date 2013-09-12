@@ -31,6 +31,12 @@ Source::Source()
 
 }
 
+Source::Source(Magick::Image image)
+    :image(image)
+{
+
+}
+
 Source::Source(std::string data)
 {
     const char* raw = data.data();

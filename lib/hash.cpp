@@ -49,10 +49,12 @@ unsigned long long imghash::Hash::toLongLong()
         return 0;
     else if (data.size() == 1)
         return data[0];
-    else {
+    else if (data.size() == 2){
         unsigned long long int result = data[0];
         result |= ((unsigned long long int)data[1] << sizeof(unsigned int));
         return result;
+    } else {
+        assert(data.size() <= 2);
     }
 }
 

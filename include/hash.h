@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <assert.h>
 #include <sstream>
 #include <math.h>
 

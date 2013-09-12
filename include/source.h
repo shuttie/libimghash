@@ -17,6 +17,7 @@ private:
     Magick::Image image;
 public:
     Source();
+    Source(Magick::Image image);
     Source(std::string data);
     Source(char* buffer, int size);
     Magick::PixelPacket* getPixels();
