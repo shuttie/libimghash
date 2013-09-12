@@ -29,7 +29,7 @@
 #include "simplehasher.h"
 #include <sys/stat.h>
 
-#define PASS_COUNT 10
+#define WIDTH_MAX 400
 #define TEST_COUNT 100
 
 int currentTimeMillis() {
@@ -46,14 +46,22 @@ int main(int argc, char* argv[]) {
         data.loadFile(argv[1]);
         // hashing
         imghash::Hasher *hasher = new imghash::SimpleHasher(8);
-        for (int pass=0; pass<PASS_COUNT; ++pass) {
+        for (int width=8; width<WIDTH_MAX; ++width) {
+            Magick::Image target(data.getImage());
+            target.type(Magick::TrueColorType);
+            target.modifyImage();
+            Magick::Geometry resizeGeom;
+            resizeGeom.width(width);
+            target.resize(resizeGeom);
+            Magick::Geometry geom = target.size();
+            imghash::Source targetSource(target);
             int msecStart = currentTimeMillis();
             for (int test=0; test<TEST_COUNT; ++test) {
-                imghash::Hash hash = hasher->hash(data);
+                imghash::Hash hash = hasher->hash(target);
             }
             int msecEnd = currentTimeMillis();
             float perf = (float)TEST_COUNT*1000.0f/(float)(msecEnd - msecStart);
-            printf("pass %2d: done %d in %dms, speed=%f\n", pass, TEST_COUNT, msecEnd-msecStart, perf);
+            printf("width %2d: done %d in %dms, speed=%f\n", width, TEST_COUNT, msecEnd-msecStart, perf);
         }
         delete hasher;
     } else {
