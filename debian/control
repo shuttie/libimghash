@@ -14,5 +14,5 @@ Description: libimghash development stuff
 Package: libimghash
 Section: libs
 Architecture: any
-Depends: imagemagich (>= 6.6), libmagick++5
+Depends: imagemagick (>= 6.6), libmagick++5
 Description: Image hashing library
