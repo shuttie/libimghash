@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
         imghash::Source data;
         data.loadFile(argv[1]);
         // hashing
-        imghash::Hasher *hasher = new imghash::SimpleHasher(8);
+        imghash::SimpleHasher hasher;
         for (int width=8; width<WIDTH_MAX; ++width) {
             Magick::Image target(data.getImage());
             target.type(Magick::TrueColorType);
@@ -57,13 +57,12 @@ int main(int argc, char* argv[]) {
             imghash::Source targetSource(target);
             int msecStart = currentTimeMillis();
             for (int test=0; test<TEST_COUNT; ++test) {
-                imghash::Hash hash = hasher->hash(target);
+                imghash::Hash hash = hasher.hash(target);
             }
             int msecEnd = currentTimeMillis();
             float perf = (float)TEST_COUNT*1000.0f/(float)(msecEnd - msecStart);
             printf("width %2d: done %d in %dms, speed=%f\n", width, TEST_COUNT, msecEnd-msecStart, perf);
         }
-        delete hasher;
     } else {
         printf("Usage: ./benchmark <input_file>");
     }

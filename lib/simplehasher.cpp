@@ -30,7 +30,7 @@ imghash::SimpleHasher::SimpleHasher(unsigned int size)
 
 }
 
-imghash::Hash imghash::SimpleHasher::hash(Source image)
+imghash::Hash imghash::SimpleHasher::hashSource(Source image)
 {
     Magick::Image target(image.getImage());
     target.type(Magick::TrueColorType);

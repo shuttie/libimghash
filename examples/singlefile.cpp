@@ -29,11 +29,10 @@ int main(int argc, char* argv[]) {
         imghash::Source data;
         data.loadFile(argv[1]);
         // hashing
-        imghash::Hasher *hasher = new imghash::SimpleHasher(8);
-        imghash::Hash hash = hasher->hash(data);
+        imghash::SimpleHasher hasher;
+        imghash::Hash hash = hasher.hash(data);
         std::cout << "hash hex: " << hash.toHex() << "\n";
         std::cout << "hash: " << hash.toLongLong() << "\n";
-        delete hasher;
     } else {
         printf("Usage: ./singlefile <input_file>");
     }

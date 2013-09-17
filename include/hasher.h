@@ -8,9 +8,11 @@ namespace imghash {
 
 class Hasher {
 public:
-    virtual Hash hash(char* buffer, unsigned int length);
-    virtual Hash hash(std::string& data);
-    virtual Hash hash(Source image) = 0;
+    Hash hash(char* buffer, unsigned int length);
+    Hash hash(std::string& data);
+    Hash hash(Source image);
+protected:
+    virtual Hash hashSource(Source image) = 0;
 };
 
 }

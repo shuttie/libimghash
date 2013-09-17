@@ -26,10 +26,15 @@
 
 imghash::Hash imghash::Hasher::hash(char *buffer, unsigned int length)
 {
-    return hash(Source(buffer, length));
+    return hashSource(Source(buffer, length));
 }
 
 imghash::Hash imghash::Hasher::hash(std::string &data)
 {
-    return hash(Source(data));
+    return hashSource(Source(data));
+}
+
+imghash::Hash imghash::Hasher::hash(imghash::Source image)
+{
+    return hashSource(image);
 }
