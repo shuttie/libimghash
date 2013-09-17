@@ -8,7 +8,7 @@ Standards-Version: 3.9.3
 Package: libimghash-dev
 Section: libdevel
 Architecture: any
-Depends: imagemagick (>= 6.6), libmagick++5, libimghash
+Depends: imagemagick (>= 6.6), libmagick++5, libmagick++-dev, libimghash
 Description: libimghash development stuff
 
 Package: libimghash
