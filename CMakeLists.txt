@@ -5,7 +5,7 @@ FIND_PACKAGE(ImageMagick COMPONENTS Magick++ REQUIRED)
 include_directories("${ImageMagick_INCLUDE_DIRS}")
 include_directories("include")
 add_definitions("-DMAGICKCORE_QUANTUM_DEPTH=8" "-DMAGICKCORE_HDRI_ENABLE=0")
-add_library(imghash SHARED lib/source.cpp include/source.h lib/hash.cpp include/hash.h lib/hasher.cpp include/hasher.h lib/simplehasher.cpp include/simplehasher.h include/imghash_c.h)
+add_library(imghash SHARED lib/source.cpp include/source.h lib/hash.cpp include/hash.h lib/hasher.cpp include/hasher.h lib/simplehasher.cpp include/simplehasher.h include/imghash_c.h include/imghash_c.cpp)
 target_link_libraries(imghash ${ImageMagick_LIBRARIES})
 
 add_library(imghash-c SHARED lib/imghash_c.cpp include/imghash_c.h)
