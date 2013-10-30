@@ -30,6 +30,6 @@ install(TARGETS imghash
     LIBRARY DESTINATION lib
 )
 
-install(FILES include/source.h include/hash.h include/hasher.h include/simplehasher.h
+install(FILES include/source.h include/hash.h include/hasher.h include/simplehasher.h include/imghash_c.h
     DESTINATION include/imghash
 )
