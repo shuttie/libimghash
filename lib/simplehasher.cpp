@@ -36,11 +36,12 @@ imghash::Hash imghash::SimpleHasher::hashSource(Source image)
     target.type(Magick::TrueColorType);
     target.modifyImage();
     target.colorSpace(Magick::GRAYColorspace);
+    target.filterType(Magick::PointFilter);
     Magick::Geometry resizeGeom;
     resizeGeom.aspect(true);
     resizeGeom.width(size);
     resizeGeom.height(size);
-    target.resize(resizeGeom);
+    target.scale(resizeGeom);
     Magick::Geometry geom = target.size();
     Magick::PixelPacket* pixels = target.getPixels(0,0,size,size);
     float averageColor = getAverage(pixels);

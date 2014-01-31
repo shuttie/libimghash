@@ -29,7 +29,7 @@
 #include "simplehasher.h"
 #include <sys/stat.h>
 
-#define WIDTH_MAX 400
+#define WIDTH_MAX 200
 #define TEST_COUNT 100
 
 int currentTimeMillis() {
